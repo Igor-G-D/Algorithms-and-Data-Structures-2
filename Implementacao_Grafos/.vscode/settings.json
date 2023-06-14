@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_2/Algorithms-and-Data-Structures-2/Implementacao_Grafos/output",
+            "binaryPath": "/home/igor/Programming/Algoritmos_E_Estrutura_De_Dados_2/Algorithms-and-Data-Structures-2/Implementacao_Grafos/output/main",
+            "binaryArgs": []
+        }
+    ]
+}
