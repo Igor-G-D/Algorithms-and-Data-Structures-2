@@ -16,8 +16,8 @@ void printGraphAdjancencyMatrix(GraphNode * nodes[], int size) { // prints out t
     printf("\n");
 }
 
-void readUserInput(int size, int * sourceNode, int * destinationNode, int * weight) {
-    
+void readUserInput(int size, int remove, int * sourceNode, int * destinationNode, int * weight) {
+    printf( "=========================================\n" );
     do {
         printf("Choose source node (Nodes are numbered 0 to 19): ");
         scanf("%d", sourceNode);
@@ -28,8 +28,11 @@ void readUserInput(int size, int * sourceNode, int * destinationNode, int * weig
         scanf("%d", destinationNode);
     } while((*destinationNode) < 0 && (*destinationNode) >= size);
 
-    printf("Choose the weight of the new link : ");
-    scanf("%d", weight);
+    if(!remove) {
+        printf("Choose the weight of the new link : ");
+        scanf("%d", weight);
+    }
+    printf( "=========================================\n" );
 
 }
 
@@ -61,4 +64,32 @@ void removeLink(GraphNode * source, GraphNode * destination) {
         source->linkArray[destination->value] = NULL;
         free(temp);
     }
+}
+
+void freeNodes( GraphNode * nodes[], int size ) {
+    for( int i = 0 ; i < size ; i ++ ) {
+        for( int j = 0 ; j < size ; j ++ ) {
+            if(nodes[i]->linkArray[j]) {
+                free(nodes[i]->linkArray[j]);
+            }
+        }
+        free(nodes[i]);
+    }
+}
+
+int menu( ) {
+    int choice;
+	do {
+        printf( "=========================================\n" );
+		printf( "-- Menu:\n");
+		printf( "\t 1. Add or alter a link between nodes\n" );
+		printf( "\t 2. Remove a link between nodes\n" );
+		printf( "\t 3. Print Adjacency Matrix\n" );
+        printf( "\t 4. Exit\n" );
+		printf( "-- Enter your choice: " );
+		scanf( "%d", &choice );
+        printf( "=========================================\n" );
+	} while ( choice <= 0 || choice > 4 );
+	getchar( );
+    return choice;
 }
