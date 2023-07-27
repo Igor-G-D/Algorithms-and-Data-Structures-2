@@ -84,7 +84,7 @@ void removeLink(GraphNode * source, GraphNode * destination) {
 void freeNodes( GraphNode * nodes[], int size ) {
     for( int i = 0 ; i < size ; i ++ ) {
         for( int j = 0 ; j < size ; j ++ ) {
-            if(nodes[i]->linkArray[j]) {
+            if(nodes[i] && nodes[i]->linkArray[j]) {
                 free(nodes[i]->linkArray[j]);
             }
         }
