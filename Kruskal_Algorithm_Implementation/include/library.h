@@ -19,5 +19,7 @@ GraphNode * createNode(int value);
 void alterLink(GraphNode * source, GraphNode * destination, int newWeight);
 void removeLink(GraphNode * source, GraphNode * destination);
 void freeNodes( GraphNode * nodes[], int size );
-GraphLink * getLinks(GraphNode * nodes[], int * size);
+GraphLink ** getLinks(GraphNode * nodes[], int * size);
+void kruskalAlgorithmMST(GraphLink **links, int size, GraphNode * MST[]);
+int cmpfunc (const void * a, const void * b);
 int menu( );

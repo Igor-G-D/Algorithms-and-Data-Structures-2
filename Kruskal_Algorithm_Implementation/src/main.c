@@ -5,6 +5,7 @@
 int main(int argc, char const *argv[])
 {
     GraphNode * nodes[20];
+    GraphNode * MST[20];
 
     for(int i = 0 ; i < 20 ; i ++) {
         nodes[i] = createNode(i);
@@ -26,7 +27,20 @@ int main(int argc, char const *argv[])
                 printGraphAdjancencyMatrix(nodes, 20);
                 break;
             case 4:
+                int size = 0;
+                GraphLink **links = getLinks(nodes, &size);
+                kruskalAlgorithmMST(links, size, MST);
+                if (MST != NULL) {
+                    printGraphAdjancencyMatrix(MST, 20);
+                } else {
+                    printf("Minimum Spanning Tree not found!\n");
+                }
+                break;
+            case 5:
                 freeNodes(nodes, 20);
+                if (MST != NULL) {
+                    freeNodes(MST, 20);
+                }
                 exit(0);
                 break;
             default:
